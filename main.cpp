@@ -94,14 +94,14 @@ int select_goat(list<Goat> trip){
     display_trip(trip);
     cout << "\nChoose Goat (1-" << max << "): ";
     int choice; cin >> choice;
-    choice--; // change it to 0 - (size-1) range
+    choice;
 
-    if (choice < 0 || choice > max-1){ // input validation
+    if (choice < 1 || choice > max){ // input validation
         cout << "Invalid Input.\n";
-        select_goat(trip);
+        return select_goat(trip);
     }
 
-    return choice;
+    return choice-1; // change it to 0 - (size-1) range
 }
 
 void delete_goat(list<Goat> &trip){
