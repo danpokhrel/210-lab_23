@@ -1,3 +1,4 @@
+// COMSC-210 | Lab 23 | Dan Pokhrel
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -29,9 +30,29 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
+    while (true){ // Loops until the user enters 4 to quit
+        
+    }
 
 
     return 0;
 }
 
+int main_menu(){
+    cout << "\n*** GOAT MANAGER 3001 ***\n";
+    cout << "[1] Add a goat\n";
+    cout << "[2] Delete a goat\n";
+    cout << "[3] List goats\n";
+    cout << "[4] Quit\n";
+    cout << "Choice --> ";
+    int choice;
+    cin >> choice;
+
+    // Input Validation
+    if (choice < 1 || choice > 4){ // Out of bounds
+        cout << "Invalid Input. Please Try Again.\n";
+        return main_menu();
+    }
+
+    return choice;
+}
