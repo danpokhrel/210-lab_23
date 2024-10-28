@@ -10,7 +10,7 @@ const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
-void add_goat(list<Goat> &trip, string [], string []);
+void add_goat(list<Goat> &trip, string [], int age, string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
@@ -30,8 +30,24 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    while (true){ // Loops until the user enters 4 to quit
-        
+    list<Goat> trip;
+
+    bool quit = false;
+    while (!quit){ // Loops until the user enters 4 to quit
+        int choice = main_menu();
+
+        switch (choice){
+        case 1:
+            add_goat(trip, &names[rand() % SZ_NAMES], rand() % (MAX_AGE+1), &colors[rand() % SZ_COLORS]);
+            break;
+        case 2:
+            delete_goat(trip);
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        }
     }
 
 
