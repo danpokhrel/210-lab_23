@@ -80,9 +80,30 @@ void add_goat(list<Goat> &trip, string name, int age, string color){
 }
 
 void display_trip(list<Goat> trip){
-    int i = 0;
+    int i = 0; cout << endl;
     for (auto goat : trip){
         i++;
         cout << "[" << i << "] " << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ")\n";
     }
+}
+
+int select_goat(list<Goat> trip){
+    int max = trip.size();
+
+    // Prompt
+    display_trip(trip);
+    cout << "\nChoose Goat (1-" << max << "): ";
+    int choice; cin >> choice;
+
+    if (choice < 1 || choice > max){ // input validation
+        cout << "Invalid Input.\n";
+        select_goat(trip);
+    }
+
+    return choice-1; // change it to 0 - (size-1) range
+}
+
+void delete_goat(list<Goat> &trip){
+    int i = select_goat(trip);
+    trip.erase(i);
 }
